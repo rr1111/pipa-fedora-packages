@@ -8,7 +8,6 @@ Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pip
 URL: https://github.com/pipa-mainline/linux
 Source1: %{url}/archive/%{_commit}/linux-%{_commit}.tar.gz
 Source2: pipa.config
-Source3: add-touchpad-button-event.patch
 License: GPL
 
 Provides: kernel = %{version}-%{release}
