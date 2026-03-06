@@ -41,7 +41,6 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 tar -xzf %{SOURCE1}
 cd linux-%{_commit}
 cp %{SOURCE2} arch/arm64/configs/pipa.config
-patch -p1 < %{SOURCE3}
 
 %build
 cd linux-%{_commit}
