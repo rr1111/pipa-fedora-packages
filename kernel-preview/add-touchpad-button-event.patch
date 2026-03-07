@@ -1,4 +1,4 @@
-From 97f54a67567f943950d4cedfaf5e93c4c48a24e6 Mon Sep 17 00:00:00 2001
+rom 97f54a67567f943950d4cedfaf5e93c4c48a24e6 Mon Sep 17 00:00:00 2001
 From: Seyed Danial Movahed <Movaheddanial@gmail.com>
 Date: Thu, 7 Aug 2025 17:12:07 +0330
 Subject: [PATCH] input: keyboard: nanosic_803: add touchpad button event
