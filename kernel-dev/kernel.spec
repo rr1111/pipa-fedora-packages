@@ -3,7 +3,7 @@
 Name: kernel
 ExclusiveArch: aarch64
 Version: 6.18.2
-Release: 3.dev.pipa.reyr-chargingtest
+Release: 3.dev.pipa.reyr.chargingtest
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
 URL: https://github.com/rr1111/linux
 Source1: %{url}/archive/%{_commit}/linux-%{_commit}.tar.gz
