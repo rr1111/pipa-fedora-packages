@@ -5,8 +5,8 @@ ExclusiveArch: aarch64
 Version: 6.19.6
 Release: 6.dev.pipa
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
-URL: https://gitlab.com/rr1111/pipa-stable
-Source1: %{url}/-/archive/%{_commit}/pipa-stable-%{_commit}.tar.gz
+URL: https://gitlab.com/rr1111/linux
+Source1: %{url}/-/archive/%{_commit}/linux-%{_commit}.tar.gz
 Source2: pipa.config
 License: GPL
 
