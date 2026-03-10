@@ -1,4 +1,4 @@
-%global _commit 5f58586d833f9821cb6cea75d23cb5813e9f004d
+%global _commit bf76a2bef3386d3b22ca1d58a7f27057fc2618f7
 
 Name: kernel
 ExclusiveArch: aarch64
