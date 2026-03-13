@@ -2,7 +2,7 @@ Name: pipa-sensor-restart
 Version: 0.1
 Release: 1
 Summary: Sytemd wakeup script that restart iio-sensor-proxy and exagonrpcd-sdsp
-Source1: pipa-sensor-restart.sh
+Source1: pipa-sensor-restart
 License: Unknown
 BuildArch: noarch
 
