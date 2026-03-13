@@ -2,7 +2,7 @@
 case "$1" in
   post)
     /usr/bin/systemd-run \
-      --unit=pipa-sonsor-restart --no-block \
+      --unit=pipa-sensor-restart --no-block \
       /bin/sh -c '
         sleep 2
         /usr/bin/systemctl restart iio-sensor-proxy.service
