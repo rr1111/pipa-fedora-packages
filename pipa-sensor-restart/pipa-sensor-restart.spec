@@ -7,7 +7,7 @@ License: Unknown
 BuildArch: noarch
 
 %description
-Systemd wakeup script that restart iio-sensor-proxy and exagonrpcd-sdsp
+Systemd wakeup script that restart iio-sensor-proxy and hexagonrpcd-sdsp to hack around sensor suspend issues on pipa
 
 %install
 install -Dm0755 "%{SOURCE1}" "%{buildroot}/usr/lib/systemd/system-sleep/pipa-sensor-restart"
