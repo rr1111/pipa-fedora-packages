@@ -3,7 +3,7 @@
 Name: kernel
 ExclusiveArch: aarch64
 Version: 6.19.6
-Release: 1.dev.postmarketos
+Release: 8.dev.postmarketos
 Summary: postmarketos sm8250 kernel
 URL: https://gitlab.postmarketos.org/soc/qualcomm-sm8250/linux
 Source1: %{url}/-/archive/%{_commit}/linux-%{_commit}.tar.gz
