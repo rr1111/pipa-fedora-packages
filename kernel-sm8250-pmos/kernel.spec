@@ -46,6 +46,7 @@ cp %{SOURCE2} arch/arm64/configs/pipa.config
 cd linux-%{_commit}
 make defconfig pipa.config -j`nproc`
 make EXTRAVERSION="-%{release}" -j`nproc`
+make EXTRAVERSION="-%{release}" dtbs -j`nproc`
 
 %install
 cd linux-%{_commit}
@@ -57,7 +58,9 @@ cp System.map %{buildroot}/boot/System.map-$kernel_version
 cp .config %{buildroot}/boot/config-$kernel_version
 
 make EXTRAVERSION="-%{release}" modules_install INSTALL_MOD_PATH=%{buildroot}/usr
-cp arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dtb %{buildroot}/usr/lib/modules/$kernel_version/devicetree
+install -d %{buildroot}/usr/lib/modules/$kernel_version/devicetree
+cp -a arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa-csot.dtb   %{buildroot}/usr/lib/modules/$kernel_version/devicetree/
+cp -a arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa-tianma.dtb %{buildroot}/usr/lib/modules/$kernel_version/devicetree/
 ln -s ./devicetree %{buildroot}/usr/lib/modules/$kernel_version/dtb
 cp arch/arm64/boot/Image.gz %{buildroot}/usr/lib/modules/$kernel_version/vmlinuz
 make EXTRAVERSION="-%{release}" headers_install INSTALL_HDR_PATH=%{buildroot}/usr
