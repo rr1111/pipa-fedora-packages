@@ -11,6 +11,7 @@ Systemd wakeup script that restart iio-sensor-proxy and hexagonrpcd-sdsp to hack
 
 %install
 install -Dm0755 "%{SOURCE1}" "%{buildroot}/usr/lib/systemd/system-sleep/pipa-sensor-restart"
+install -Dm0755 "%{SOURCE1}" "%{buildroot}/usr/local/bin/pipa-sensor-restart"
 
 %files
 /usr/lib/systemd/system-sleep/pipa-sensor-restart
