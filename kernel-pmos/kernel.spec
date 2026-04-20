@@ -68,6 +68,7 @@ cp %{SOURCE2} .config
 cd linux-%{version}
 make olddefconfig .config -j`nproc`
 make EXTRAVERSION="-%{release}" -j`nproc`
+make EXTRAVERSION="-%{release}" dtbs -j`nproc`
 
 %install
 cd linux-%{version}
@@ -79,8 +80,11 @@ cp System.map %{buildroot}/boot/System.map-$kernel_version
 cp .config %{buildroot}/boot/config-$kernel_version
 
 make EXTRAVERSION="-%{release}" modules_install INSTALL_MOD_PATH=%{buildroot}/usr
-cp arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dtb %{buildroot}/usr/lib/modules/$kernel_version/devicetree
-ln -s ./devicetree %{buildroot}/usr/lib/modules/$kernel_version/dtb
+
+mkdir -p %{buildroot}/boot/dtbs
+make EXTRAVERSION="-%{release}" dtbs_install INSTALL_DTBS_PATH=%{buildroot}/boot/dtbs
+
+ln -s /boot/dtbs %{buildroot}/usr/lib/modules/$kernel_version/dtb
 cp arch/arm64/boot/Image.gz %{buildroot}/usr/lib/modules/$kernel_version/vmlinuz
 make EXTRAVERSION="-%{release}" headers_install INSTALL_HDR_PATH=%{buildroot}/usr
 rm %{buildroot}/usr/lib/modules/%{version}*/build
@@ -89,6 +93,7 @@ rm %{buildroot}/usr/lib/modules/%{version}*/build
 /boot/System.map-%{version}*
 /boot/config-%{version}*
 /boot/vmlinuz-%{version}*
+/boot/dtbs
 /usr/lib/modules/%{version}*
 
 %posttrans
