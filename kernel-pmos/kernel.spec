@@ -81,6 +81,7 @@ cp .config %{buildroot}/boot/config-$kernel_version
 
 make EXTRAVERSION="-%{release}" modules_install INSTALL_MOD_PATH=%{buildroot}/usr
 
+make EXTRAVERSION="-%{release}" dtbs -j`nproc`
 mkdir -p %{buildroot}/boot/dtbs
 make EXTRAVERSION="-%{release}" dtbs_install INSTALL_DTBS_PATH=%{buildroot}/boot/dtbs
 
