@@ -8,17 +8,17 @@ License: GPL
 Source1: https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-%{version}.tar.xz
 Source2: pipa.config
 
-Patch0001: 0001-arm64-dts-qcom-sm8250-xiaomi-pipa-Add-device-tree-fo.patch
-Patch0002: 0002-power-supply-Add-driver-for-Qualcomm-PMIC-fuel-gauge.patch
-Patch0003: 0003-Input-Add-nt36523-touchscreen-driver.patch
-Patch0004: 0004-drm-Add-drm-notifier-support.patch
-Patch0005: 0005-drm-dsi-emit-panel-turn-on-off-signal-to-touchscreen.patch
-Patch0006: 0006-drm-msm-dsi-change-sync-mode-to-sync-on-DSI0-rather-.patch
-Patch0007: 0007-drm-msm-dsi-support-DSC-configurations-with-slice_pe.patch
-Patch0008: 0008-drm-panel-Add-support-for-Novatek-NT36532-panel.patch
-Patch0009: 0009-drivers-media-i2c-ov13b10-add-device-tree-support-an.patch
-Patch0010: 0010-ASoC-codecs-aw88261-add-hacks-for-xiaomi-pipa.patch
-Patch0011: 0011-ASoC-qcom-sm8250-Add-tdm-support.patch
+Source3: 0001-arm64-dts-qcom-sm8250-xiaomi-pipa-Add-device-tree-fo.patch
+Source4: 0002-power-supply-Add-driver-for-Qualcomm-PMIC-fuel-gauge.patch
+Source5: 0003-Input-Add-nt36523-touchscreen-driver.patch
+Source6: 0004-drm-Add-drm-notifier-support.patch
+Source7: 0005-drm-dsi-emit-panel-turn-on-off-signal-to-touchscreen.patch
+Source8: 0006-drm-msm-dsi-change-sync-mode-to-sync-on-DSI0-rather-.patch
+Source9: 0007-drm-msm-dsi-support-DSC-configurations-with-slice_pe.patch
+Source10: 0008-drm-panel-Add-support-for-Novatek-NT36532-panel.patch
+Source11: 0009-drivers-media-i2c-ov13b10-add-device-tree-support-an.patch
+Source12: 0010-ASoC-codecs-aw88261-add-hacks-for-xiaomi-pipa.patch
+Source13: 0011-ASoC-qcom-sm8250-Add-tdm-support.patch
 
 Provides: kernel = %{version}-%{release}
 Provides: kernel-core = %{version}-%{release}
@@ -51,17 +51,17 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 tar -xf %{SOURCE1}
 cd linux-%{version}
 cp %{SOURCE2} .config
-patch -p1 < %{Patch0001}
-patch -p1 < %{Patch0002}
-patch -p1 < %{Patch0003}
-patch -p1 < %{Patch0004}
-patch -p1 < %{Patch0005}
-patch -p1 < %{Patch0006}
-patch -p1 < %{Patch0007}
-patch -p1 < %{Patch0008}
-patch -p1 < %{Patch0009}
-patch -p1 < %{Patch00010}
-patch -p1 < %{Patch00011}
+patch -p1 < %{Source3}
+patch -p1 < %{Source4}
+patch -p1 < %{Source5}
+patch -p1 < %{Source6}
+patch -p1 < %{Source7}
+patch -p1 < %{Source8}
+patch -p1 < %{Source9}
+patch -p1 < %{Source10}
+patch -p1 < %{Source11}
+patch -p1 < %{Source12}
+patch -p1 < %{Source13}
 
 
 %build
