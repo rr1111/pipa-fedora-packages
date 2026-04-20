@@ -84,7 +84,10 @@ make EXTRAVERSION="-%{release}" modules_install INSTALL_MOD_PATH=%{buildroot}/us
 mkdir -p %{buildroot}/boot/dtbs
 make EXTRAVERSION="-%{release}" dtbs_install INSTALL_DTBS_PATH=%{buildroot}/boot/dtbs
 
+mkdir -p %{buildroot}/usr/lib/modules/$kernel_version
+rm -rf %{buildroot}/usr/lib/modules/$kernel_version/dtb
 ln -s /boot/dtbs %{buildroot}/usr/lib/modules/$kernel_version/dtb
+
 cp arch/arm64/boot/Image.gz %{buildroot}/usr/lib/modules/$kernel_version/vmlinuz
 make EXTRAVERSION="-%{release}" headers_install INSTALL_HDR_PATH=%{buildroot}/usr
 rm %{buildroot}/usr/lib/modules/%{version}*/build
