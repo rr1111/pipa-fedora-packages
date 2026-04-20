@@ -1,12 +1,12 @@
 Name: kernel
 ExclusiveArch: aarch64
 Version: 6.19.12
-Release: 1.dev.pipa.rr1111
+Release: 1.dev.pipa
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa)
 URL: https://kernel.org
 License: GPL
 Source1: https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-%{version}.tar.xz
-Source2: ipa.config
+Source2: pipa.config
 
 Patch0001: 0001-arm64-dts-qcom-sm8250-xiaomi-pipa-Add-device-tree-fo.patch
 Patch0002: 0002-power-supply-Add-driver-for-Qualcomm-PMIC-fuel-gauge.patch
