@@ -5,7 +5,7 @@ Release: 1.dev.pipa.rr1111
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa)
 URL: https://kernel.org
 License: GPL
-Source1: https://cdn.kernel.org/pub/linux/kernel/v${version%%.*}x/linux-${Version}.tar.xz
+Source1: https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-%{version}.tar.xz
 Source2: ipa.config
 
 Patch0001: 0001-arm64-dts-qcom-sm8250-xiaomi-pipa-Add-device-tree-fo.patch
