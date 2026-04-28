@@ -32,7 +32,7 @@ Requires: systemd
 Requires: %{name}-core = %{version}-%{release}
 Requires: %{name}-modules = %{version}-%{release}
 
-Conflicts: kernel kernel-core kernel-modules kernel-headers
+Obsoletes: kernel < %{version}-%{release}
 
 
 %description
@@ -77,6 +77,7 @@ rm -f %{buildroot}/usr/lib/modules/$kernel_version/source
 %package core
 License: GPL-2.0-only
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
+Obsoletes: kernel-core < %{version}-%{release}
 
 %description core
 Mainline kernel for Xiaomi Pad 6 (pipa).
@@ -99,6 +100,7 @@ kernel-install remove %{version}-%{release} /usr/lib/modules/%{version}-%{releas
 License: GPL-2.0-only
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
 Requires: %{name}-core = %{version}-%{release}
+Obsoletes: kernel-modules < %{version}-%{release}
 
 %description modules
 Mainline kernel for Xiaomi Pad 6 (pipa).
@@ -113,6 +115,7 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 %package headers
 License: GPL-2.0-only
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
+Obsoletes: kernel-headers < %{version}-%{release}
 
 %description headers
 Mainline kernel headers for Xiaomi Pad 6 (pipa).
