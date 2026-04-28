@@ -69,7 +69,6 @@ rm -f %{buildroot}/usr/lib/modules/$kernel_version/source
 %package core
 License: GPL-2.0-only
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
-Provides: kernel-core = %{version}-%{release}
 
 %description core
 Mainline kernel for Xiaomi Pad 6 (pipa).
@@ -106,7 +105,6 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 %package headers
 License: GPL-2.0-only
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
-Requires: kernel-core = %{version}-%{release}
 
 %description headers
 Mainline kernel headers for Xiaomi Pad 6 (pipa).
