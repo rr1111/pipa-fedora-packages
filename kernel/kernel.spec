@@ -43,8 +43,14 @@ cp %{SOURCE2} .config
 
 %build
 cd linux-%{_commit}
+cp %{SOURCE2} .config
 make olddefconfig
+
+grep -q '^CONFIG_IP_NF_IPTABLES=m$' .config || exit 1
+
 make EXTRAVERSION="-%{release}" -j%{_smp_build_ncpus} Image.gz modules dtbs
+
+ls -1 net/ipv4/netfilter/ip_tables.ko* >/dev/null 2>&1 || exit 1
 
 %install
 cd linux-%{_commit}
