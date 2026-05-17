@@ -1,18 +1,14 @@
 %global _commit c6519fac8366fe4d73c0f356e20f1edfcb9c8371
 
-Name: kernel
+Name: kernel-pipa
 ExclusiveArch: aarch64
 Version: 7.0.8
-Release: 2.dev.pipa
+Release: 2.dev.pipa%{?dist}
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
 URL: https://github.com/PipaDB/linux
 Source1: %{url}/archive/%{_commit}/linux-%{_commit}.tar.gz
 Source2: pipa.config
-License: GPL
-
-Provides: kernel = %{version}-%{release}
-Provides: kernel-core = %{version}-%{release}
-Provides: kernel-modules = %{version}-%{release}
+License: GPL-2.0-only
 
 BuildRequires: kmod, bash, coreutils, tar, git-core, which
 BuildRequires: bzip2, xz, findutils, m4, perl-interpreter, perl-Carp, perl-devel, perl-generators, make, diffutils, gawk
@@ -29,10 +25,14 @@ BuildRequires: rsync
 BuildRequires: opencsd-devel >= 1.0.0
 BuildRequires: openssl-devel
 
-Requires: dracut >= 027
+Requires: dracut
 Requires: bash
 Requires: coreutils
 Requires: systemd
+Requires: %{name}-core = %{version}-%{release}
+Requires: %{name}-modules = %{version}-%{release}
+
+
 
 %description
 Mainline kernel for Xiaomi Pad 6 (pipa).
@@ -40,12 +40,14 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 %prep
 tar -xzf %{SOURCE1}
 cd linux-%{_commit}
-cp %{SOURCE2} arch/arm64/configs/pipa.config
+cp %{SOURCE2} .config
 
 %build
 cd linux-%{_commit}
-make defconfig pipa.config -j`nproc`
-make EXTRAVERSION="-%{release}" -j`nproc`
+cp %{SOURCE2} .config
+make olddefconfig
+
+make EXTRAVERSION="-%{release}" -j%{_smp_build_ncpus} Image.gz modules dtbs
 
 %install
 cd linux-%{_commit}
@@ -56,80 +58,60 @@ cp arch/arm64/boot/Image.gz %{buildroot}/boot/vmlinuz-$kernel_version
 cp System.map %{buildroot}/boot/System.map-$kernel_version
 cp .config %{buildroot}/boot/config-$kernel_version
 
-make EXTRAVERSION="-%{release}" modules_install INSTALL_MOD_PATH=%{buildroot}/usr
+make EXTRAVERSION="-%{release}" modules_install INSTALL_MOD_PATH=%{buildroot}/usr DEPMOD=true
 cp arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dtb %{buildroot}/usr/lib/modules/$kernel_version/devicetree
 ln -s ./devicetree %{buildroot}/usr/lib/modules/$kernel_version/dtb
 cp arch/arm64/boot/Image.gz %{buildroot}/usr/lib/modules/$kernel_version/vmlinuz
 make EXTRAVERSION="-%{release}" headers_install INSTALL_HDR_PATH=%{buildroot}/usr
-rm %{buildroot}/usr/lib/modules/%{version}*/build
+rm -f %{buildroot}/usr/lib/modules/$kernel_version/build
+rm -f %{buildroot}/usr/lib/modules/$kernel_version/source
 
 %files
-/boot/System.map-%{version}*
-/boot/config-%{version}*
-/boot/vmlinuz-%{version}*
-/usr/lib/modules/%{version}*
-
-%posttrans
-dracut -f --kver %{version}-%{release} /usr/lib/modules/%{version}-%{release}/initramfs.img
-kernel-install add %{version}-%{release} /usr/lib/modules/%{version}-%{release}/vmlinuz /usr/lib/modules/%{version}-%{release}/initramfs.img
-
-%postun
-kernel-install remove %{version}-%{release} /usr/lib/modules/%{version}-%{release}/vmlinuz
 
 
 %package core
-License: GPL
+License: GPL-2.0-only
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
-Requires: kernel
+
 
 %description core
 Mainline kernel for Xiaomi Pad 6 (pipa).
 
 %files core
+/boot/System.map-%{version}-%{release}
+/boot/config-%{version}-%{release}
+/boot/vmlinuz-%{version}-%{release}
+
+%posttrans core
+dracut -f --kver %{version}-%{release} /usr/lib/modules/%{version}-%{release}/initramfs.img
+kernel-install add %{version}-%{release} /usr/lib/modules/%{version}-%{release}/vmlinuz /usr/lib/modules/%{version}-%{release}/initramfs.img
+
+
+%postun core
+kernel-install remove %{version}-%{release} /usr/lib/modules/%{version}-%{release}/vmlinuz
 
 
 %package modules
-License: GPL
+License: GPL-2.0-only
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
-Requires: kernel
+Requires: %{name}-core = %{version}-%{release}
 
 %description modules
 Mainline kernel for Xiaomi Pad 6 (pipa).
 
 %files modules
+/usr/lib/modules/%{version}-%{release}/
 
-
-%package devel
-License: GPL
-Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
-Requires: kernel-headers
-
-%description devel
-Mainline kernel header for Xiaomi Pad 6 (pipa).
-
-%files devel
+%post modules
+/sbin/depmod -a %{version}-%{release} || :
 
 
 %package headers
-License: GPL
+License: GPL-2.0-only
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
-Provides: kernel-devel = %{version}-%{release}
 
 %description headers
 Mainline kernel headers for Xiaomi Pad 6 (pipa).
 
 %files headers
-/usr/include
-
-
-%package devel-matched
-License: GPL
-Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
-Requires: kernel-devel
-Requires: kernel-core
-
-%description devel-matched
-Mainline kernel headers for Xiaomi Pad 6 (pipa).
-
-%files devel-matched
-
+/usr/include/
