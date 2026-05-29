@@ -10,6 +10,7 @@ Requires: qbootctl
 Requires: pipa-dracut
 Requires: pipa-sound-conf
 Requires: bootmac
+Requires: pipa-sensor-restart
 
 %description
 Xiaomi Pad 6 support meta packges
