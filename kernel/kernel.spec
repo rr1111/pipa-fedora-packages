@@ -83,6 +83,7 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 /boot/vmlinuz-%{version}-%{release}
 
 %posttrans core
+/sbin/depmod -a %{version}-%{release}
 dracut -f --kver %{version}-%{release} /usr/lib/modules/%{version}-%{release}/initramfs.img
 kernel-install add %{version}-%{release} /usr/lib/modules/%{version}-%{release}/vmlinuz /usr/lib/modules/%{version}-%{release}/initramfs.img
 
@@ -101,10 +102,6 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 
 %files modules
 /usr/lib/modules/%{version}-%{release}/
-
-%post modules
-/sbin/depmod -a %{version}-%{release} || :
-
 
 %package headers
 License: GPL-2.0-only
