@@ -1,14 +1,13 @@
-%global _commit dba2f27e87cfa398cc5e5eb76e4beac30c2ecc71
+%global _commit 761bd37acb1e6e28131ed2d4e974393720432a6e
 
 Name: kernel-pipa
 ExclusiveArch: aarch64
-Version: 7.0.8
-Release: 3.pipa.testing%{?dist}
+Version: 7.1.0
+Release: 1.pipa.testing%{?dist}
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
 URL: https://github.com/PipaDB/linux
 Source1: %{url}/archive/%{_commit}/linux-%{_commit}.tar.gz
 Source2: pipa.config
-Patch1: 0001-drm-panel-nt36532-add-a-fixed-60-Hz-mode.patch
 License: GPL-2.0-only
 
 BuildRequires: kmod, bash, coreutils, tar, git-core, which
@@ -41,7 +40,6 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 %prep
 tar -xzf %{SOURCE1}
 cd linux-%{_commit}
-%patch 1 -p1
 cp %{SOURCE2} .config
 
 %build
