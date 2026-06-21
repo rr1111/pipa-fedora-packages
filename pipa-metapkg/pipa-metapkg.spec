@@ -11,6 +11,7 @@ Requires: pipa-dracut
 Requires: pipa-sound-conf
 Requires: bootmac
 Requires: pipa-sensor-restart
+Requires: pipa-kernel-flasher-hook
 
 %description
 Xiaomi Pad 6 support meta packges
