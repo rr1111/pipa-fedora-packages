@@ -17,6 +17,11 @@ Requires: wireplumber
 %description
 Sound configuration for Xiaomi Mi Pad 6 (pipa)
 
+%changelog
+* Sun Jun 21 2026 rey <renerinner114@pm.me> - 2.0-1
+- Initial package, add configs for DP audio, etc.
+
+
 %install
 install -Dm644 "%{SOURCE1}" "%{buildroot}/usr/share/alsa/ucm2/conf.d/sm8250/Xiaomi Pad 6.conf"
 
@@ -29,7 +34,7 @@ ln -s "Xiaomi Pad 6.conf" "%{buildroot}/usr/share/alsa/ucm2/conf.d/sm8250/Xiaomi
 install -Dm644 "%{SOURCE3}" "%{buildroot}/usr/share/wireplumber/wireplumber.conf.d/51-pipa.conf"
 
 %files
-/usr/share/alsa/ucm2/conf.d/sm8250/Xiaomi Pad 6.conf
+/usr/share/alsa/ucm2/conf.d/sm8250/Xiaomi\ Pad\ 6.conf
 /usr/share/alsa/ucm2/Qualcomm/sm8250/HiFi_pipa.conf
 /usr/share/alsa/ucm2/Qualcomm/sm8250/HDMI_pipa.conf
 /usr/share/alsa/ucm2/conf.d/sm8250/Xiaomi-Pad6-pipa-M82.conf
