@@ -37,6 +37,10 @@ Requires: %{name}-modules = %{version}-%{release}
 %description
 Mainline kernel for Xiaomi Pad 6 (pipa).
 
+%changelog
+* Sun Jun 21 2026 rey <renerinner114@pm.me> - 7.1.0-1.pipa.testing
+- Update source to 7.1.0.
+
 %prep
 tar -xzf %{SOURCE1}
 cd linux-%{_commit}
