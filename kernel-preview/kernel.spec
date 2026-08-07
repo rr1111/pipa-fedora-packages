@@ -3,7 +3,7 @@
 Name: kernel-pipa
 ExclusiveArch: aarch64
 Version: 7.1.2
-Release: 2.pipa%{?dist}
+Release: 3.testing.pipa%{?dist}
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
 URL: https://github.com/rmuxnet/linux
 Source1: %{url}/archive/%{_commit}/linux-%{_commit}.tar.gz
