@@ -1,0 +1,17 @@
+---
+ drivers/input/keyboard/nanosic_803.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/input/keyboard/nanosic_803.c b/drivers/input/keyboard/nanosic_803.c
+--- a/drivers/input/keyboard/nanosic_803.c
++++ b/drivers/input/keyboard/nanosic_803.c
+@@ -19,6 +19,7 @@
+ #include <linux/regmap.h>
+ #include <linux/mutex.h>
+ #include <linux/debugfs.h>
+ #include <linux/uaccess.h>
+ #include <linux/ctype.h>
++#include <linux/hex.h>
+ 
+ #define I2C_DATA_LENGTH_READ (68)
+ #define I2C_DATA_LENGTH_WRITE (66)

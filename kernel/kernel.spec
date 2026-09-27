@@ -8,6 +8,7 @@ Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pip
 URL: https://github.com/rmuxnet/linux-7.xx
 Source1: %{url}/archive/%{_commit}/linux-7.xx-%{_commit}.tar.gz
 Source2: pipa.config
+Patch0: nanosic-hex.patch
 License: GPL-2.0-only
 
 BuildRequires: kmod, bash, coreutils, tar, git-core, which
@@ -40,6 +41,7 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 %prep
 tar -xzf %{SOURCE1}
 cd linux-7.xx-%{_commit}
+%patch -P 0 -p1
 cp %{SOURCE2} .config
 
 %build
