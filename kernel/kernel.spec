@@ -6,7 +6,7 @@ Version: 7.1.7
 Release: 1.pipa%{?dist}
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
 URL: https://github.com/rmuxnet/linux-7.xx
-Source1: %{url}/archive/%{_commit}/linux-%{_commit}.tar.gz
+Source1: %{url}/archive/%{_commit}/linux-7.xx-%{_commit}.tar.gz
 Source2: pipa.config
 License: GPL-2.0-only
 
