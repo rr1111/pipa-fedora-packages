@@ -1,6 +1,7 @@
 diff --git a/drivers/input/keyboard/nanosic_803.c b/drivers/input/keyboard/nanosic_803.c
 --- a/drivers/input/keyboard/nanosic_803.c
 +++ b/drivers/input/keyboard/nanosic_803.c
-@@ -24 +24,2 @@
+@@ -25,2 +25,3 @@
  #include <linux/ctype.h>
 +#include <linux/hex.h>
+ 
