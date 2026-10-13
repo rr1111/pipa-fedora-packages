@@ -1,12 +1,12 @@
-%global _commit f6344729eb71c1cb0c4189827c679502f4cd85a8
+%global _commit 4e4b30b6533c498a2a87061e455330afa20dd3b6
 
 Name: kernel-pipa
 ExclusiveArch: aarch64
 Version: 7.1.7
 Release: 1.pipa%{?dist}
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
-URL: https://github.com/rmuxnet/linux-sm8250
-Source1: %{url}/archive/%{_commit}/linux-sm8250-%{_commit}.tar.gz
+URL: https://github.com/rr1111/linux-pipa
+Source1: %{url}/archive/%{_commit}/linux-pipa-%{_commit}.tar.gz
 Source2: pipa.config
 Patch0: nanosic-hex.patch
 License: GPL-2.0-only
@@ -40,19 +40,19 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 
 %prep
 tar -xzf %{SOURCE1}
-cd linux-sm8250-%{_commit}
+cd linux-pipa-%{_commit}
 %patch -P 0 -p1
 cp %{SOURCE2} .config
 
 %build
-cd linux-sm8250-%{_commit}
+cd linux-pipa-%{_commit}
 cp %{SOURCE2} .config
 make olddefconfig
 
 make EXTRAVERSION="-%{release}" -j%{_smp_build_ncpus} Image.gz modules dtbs
 
 %install
-cd linux-sm8250-%{_commit}
+cd linux-pipa-%{_commit}
 kernel_version=$(make EXTRAVERSION="-%{release}" kernelrelease)
 
 mkdir -p %{buildroot}/boot/
