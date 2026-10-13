@@ -40,19 +40,19 @@ Mainline kernel for Xiaomi Pad 6 (pipa).
 
 %prep
 tar -xzf %{SOURCE1}
-cd linux-7.xx-%{_commit}
+cd linux-sm8250-%{_commit}
 %patch -P 0 -p1
 cp %{SOURCE2} .config
 
 %build
-cd linux-7.xx-%{_commit}
+cd linux-sm8250-%{_commit}
 cp %{SOURCE2} .config
 make olddefconfig
 
 make EXTRAVERSION="-%{release}" -j%{_smp_build_ncpus} Image.gz modules dtbs
 
 %install
-cd linux-7.xx-%{_commit}
+cd linux-sm8250-%{_commit}
 kernel_version=$(make EXTRAVERSION="-%{release}" kernelrelease)
 
 mkdir -p %{buildroot}/boot/
