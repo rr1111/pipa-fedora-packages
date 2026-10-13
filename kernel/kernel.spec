@@ -5,7 +5,7 @@ ExclusiveArch: aarch64
 Version: 7.1.7
 Release: 1.pipa%{?dist}
 Summary: AIO package for linux kernel, modules and headers for Xiaomi Pad 6 (pipa).
-URL: https://https://github.com/rmuxnet/linux-sm8250
+URL: https://github.com/rmuxnet/linux-sm8250
 Source1: %{url}/archive/%{_commit}/linux-sm8250-%{_commit}.tar.gz
 Source2: pipa.config
 Patch0: nanosic-hex.patch
